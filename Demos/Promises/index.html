@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let aPromise = new Promise((resolve, reject) => {
+        //     let delayedFunc = setTimeout(() => {
+        //         //whether it resolves or rejects is unknown
+        //         const randomNumber = Math.random();
+        //         console.log(randomNumber);
+        //         (randomNumber < 0.5) ? resolve("resolved") : reject("rejected");
+        //     }, Math.random() * 5000); //function will return sometime: 0-5s
+        // });
+
+        // // Define what to do when the Promise indicates its resolved or rejected
+
+        // aPromise
+        //     .then((data => { console.log(data); }), (error => { console.log(error); }));
+
+        let todos;
+
+        // const getData = () => {
+        //     const responseData = fetch(`http://localhost:4000/todos/5cc08495bf3fd62d03f2f4c3`)
+        //         .then(response => {
+        //             console.dir(response);
+        //             if (response.status === 200) {
+        //                 return response.json();
+        //             }
+        //             if (response.status === 404) {
+        //                 throw new Error(`Not found - you're looking for something that's not here`);
+        //             }
+        //             throw new Error(`Unknown error`);
+        //         })
+        //         .then(parsedJson => console.log(parsedJson))
+        //         .catch(error => console.log(error.message));
+        // }
+
+        // getData();
+
+        const getDataWithAsyncFunction = async () => {
+            try {
+                const responseData = await fetch(`http://localhost:4000/todos/5cc08495bf3fd62d03f2f4c5`);
+                if (responseData.status !== 200) throw new Error(`Something's wrong!`);
+                const parsedJson = await responseData.json();
+                console.log(parsedJson);
+            } catch (e) {
+                console.log(e.message);
+            }
+        }
+
+
+
+        getDataWithAsyncFunction();
+
+        // todos = getData();
+        // console.log(todos);
+
+    </script>
+</body>
+
+</html>
